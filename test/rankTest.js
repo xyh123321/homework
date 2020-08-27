@@ -1,13 +1,5 @@
 const rankTest = require('ava');
-const {rating} = require('../src/rank')
-// rankTest('foo', t => {
-//   t.pass();
-// });
-
-// rankTest('bar', async t => {
-//   const bar = Promise.resolve('bar');
-//   t.is(await bar, 'bar');
-// });
+const { rating } = require('../src/rank')
 
 rankTest('rank case1:voyage length is 10 and history has a zone', t => {
   const voyage = {
@@ -21,7 +13,7 @@ rankTest('rank case1:voyage length is 10 and history has a zone', t => {
     }
   ];
   const res = rating(voyage, history);
-  t.is(res,'B')
+  t.is(res, 'B')
 });
 
 rankTest('rank case2:voyage length is 10 and history has not zone', t => {
@@ -31,7 +23,7 @@ rankTest('rank case2:voyage length is 10 and history has not zone', t => {
   };
   const history = [];
   const res = rating(voyage, history);
-  t.is(res,'B')
+  t.is(res, 'B')
 });
 
 rankTest('rank case3:voyage has not zone and history has a zone', t => {
@@ -43,7 +35,7 @@ rankTest('rank case3:voyage has not zone and history has a zone', t => {
     }
   ];
   const res = rating(voyage, history);
-  t.is(res,'B')
+  t.is(res, 'B')
 });
 
 
@@ -59,7 +51,7 @@ rankTest('rank case4:voyage length is 4 zone is china and history has a zone', t
     }
   ];
   const res = rating(voyage, history);
-  t.is(res,'B')
+  t.is(res, 'B')
 });
 
 rankTest('rank case5:voyage length is 9 zone is china and history has a zone', t => {
@@ -74,7 +66,7 @@ rankTest('rank case5:voyage length is 9 zone is china and history has a zone', t
     }
   ];
   const res = rating(voyage, history);
-  t.is(res,'B')
+  t.is(res, 'B')
 });
 
 
@@ -83,28 +75,53 @@ rankTest('rank case6:voyage length is 9 zone is china and history has a zone', t
     zone: 'china',
     length: 15,
   };
-  const history = [
-    {
-      zone: 'china',
-      profit: 1,
-    },
-    {
-      zone: 'west-indies1',
-      profit: 1,
-    },
-    {
-      zone: 'west-indies2',
-      profit: 1,
-    },
-    {
-      zone: 'west-indies3',
-      profit: 1,
-    },
-    {
-      zone: 'west-indies',
-      profit: 1,
-    }
-  ];
-  const res = rating(voyage, history);
-  t.is(res,'A')
+  const res = rating(voyage, history.slice(0,6));
+  t.is(res, 'A')
 });
+
+
+
+
+
+
+
+
+
+const voyage = {
+  zone: 'china',
+  length: 15,
+};
+const history = [
+  {
+    zone: 'china',
+    profit: 1,
+  },
+  {
+    zone: 'west-indies1',
+    profit: 1,
+  },
+  {
+    zone: 'east-indies',
+    profit: 6,
+  },
+  {
+    zone: 'west-indies',
+    profit: 18,
+  },
+  {
+    zone: 'china',
+    profit: -1,
+  },
+  {
+    zone: 'west-indies2',
+    profit: 1,
+  },
+  {
+    zone: 'west-indies3',
+    profit: 1,
+  },
+  {
+    zone: 'west-indies',
+    profit: 1,
+  }
+];
