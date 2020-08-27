@@ -118,11 +118,6 @@ rankTest('rank cas10', t => {
 
 
 
-
-
-
-
-
 const voyage = {
   zone: 'china',
   length: 15,
