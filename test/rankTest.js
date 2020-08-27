@@ -61,3 +61,19 @@ rankTest('rank case4:voyage length is 4 zone is china and history has a zone', t
   const res = rating(voyage, history);
   t.is(res,'B')
 });
+
+rankTest('rank case5:voyage length is 9 zone is china and history has a zone', t => {
+  const voyage = {
+    zone: 'china',
+    length: 9,
+  };
+  const history = [
+    {
+      zone: 'west-indies',
+      profit: 15,
+    }
+  ];
+  const res = rating(voyage, history);
+  t.is(res,'B')
+});
+
