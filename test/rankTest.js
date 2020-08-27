@@ -70,12 +70,48 @@ rankTest('rank case5:voyage length is 9 zone is china and history has a zone', t
 });
 
 
-rankTest('rank case6:voyage length is 9 zone is china and history has a zone', t => {
+rankTest('rank case6:voyage length is 15 zone is china and history have 6 zone', t => {
   const voyage = {
     zone: 'china',
     length: 15,
   };
   const res = rating(voyage, history.slice(0,6));
+  t.is(res, 'A')
+});
+
+rankTest('rank cas7:voyage length is 15 zone is china and history have 11 zone', t => {
+  const voyage = {
+    zone: 'china',
+    length: 15,
+  };
+  const res = rating(voyage, history.slice(0,11));
+  t.is(res, 'A')
+});
+
+rankTest('rank cas8', t => {
+  const voyage = {
+    zone: 'china',
+    length: 20,
+  };
+  const res = rating(voyage, history.slice(0,20));
+  t.is(res, 'B')
+});
+
+rankTest('rank cas9', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 20,
+  };
+  const res = rating(voyage, history.slice(0,20));
+  t.is(res, 'B')
+});
+
+rankTest('rank cas10', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 2,
+  };
+  const res = rating(voyage, history.slice(0,20));
   t.is(res, 'A')
 });
 
