@@ -15,8 +15,8 @@ function calcVoyageRiskWithVoyageZone(voyage, result) {
 }
 
 function calcVoyageRiskWithVoyageLength(voyage, result) {
-  result = voyage.length > 4 ? result + 2 : result;
-  result = voyage.length > 8 ? result + voyage.length - 8 : result;
+  result += voyage.length > 4 ? 2 : 0;
+  result += voyage.length > 8 ? voyage.length - 8 : 0;
   return result;
 }
 
@@ -25,10 +25,7 @@ function hasChinaInVoyageAndHistory(voyage, history) {
 }
 
 function captainHistoryRisk(voyage, history) {
-  let result = 1;
-  if (history.length < 5) {
-    result += 4;
-  }
+  let result = (history.length < 5) ? 5 : 1;
   result += history.filter(v => v.profit < 0).length;
   if (hasChinaInVoyageAndHistory(voyage, history)) {
     result -= 2;
