@@ -16,7 +16,7 @@ deliverTest('test case1: deliveryDate', t => {
 
 deliverTest('test case2: deliveryDate', t => {
     const anOrder = {
-        deliveryState: 'CT',
+        deliveryState: 'MA',
         placedOn: {
             plusDays: (param) => {
                 return param;
