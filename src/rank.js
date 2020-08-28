@@ -29,27 +29,23 @@ function captainHistoryRisk(voyage, history) {
 function voyageProfitFactor(voyage, history) {
   let result = 2;
   result = calcVoyageProfitByVoyageZone(result, voyage);
+  result = calcVoyageProfitByLengthInVoyageAndHistory(voyage, history, result);
+  return result;
+}
+
+function calcVoyageProfitByLengthInVoyageAndHistory(voyage, history, result) {
   if (hasChinaInVoyageAndHistory(voyage, history)) {
     result += 3;
-    result = calcVoyageProfitByZoneAndHasChina(result, history, voyage);
+    result += history.length > 10 ? 1 : 0;
+    result += voyage.length > 12 ? 1 : 0;
+    result -= voyage.length > 18 ? 1 : 0;
+    return result;
   }
   else {
-    result = calcVoyageProfitByZoneAndHasNotChina(result, history, voyage);
+    result += history.length > 8 ? 1 : 0;
+    result -= voyage.length > 18 ? 1 : 0;
+    return result;
   }
-  return result;
-}
-
-function calcVoyageProfitByZoneAndHasNotChina(result, history, voyage) {
-  result += history.length > 8 ? 1 : 0;
-  result -= voyage.length > 18 ? 1 : 0;
-  return result;
-}
-
-function calcVoyageProfitByZoneAndHasChina(result, history, voyage) {
-  result += history.length > 10 ? 1 : 0;
-  result += voyage.length > 12 ? 1 : 0;
-  result -= voyage.length > 18 ? 1 : 0;
-  return result;
 }
 
 function calcVoyageProfitByVoyageZone(result, voyage) {
