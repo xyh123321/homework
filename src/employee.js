@@ -1,3 +1,8 @@
+const employeeType = [
+  'engineer',
+  'manager',
+  'salesman',
+];
 class Employee {
   constructor (name, type) {
     this.validateType(type);
@@ -6,11 +11,7 @@ class Employee {
   }
 
   validateType (type) {
-    if (![
-      'engineer',
-      'manager',
-      'salesman',
-    ].includes(type)) {
+    if (!employeeType.includes(type)) {
       throw new Error(`Employee cannot be of type ${type}`);
     }
   }
