@@ -26,3 +26,16 @@ deliverTest('test case2: deliveryDate', t => {
     let res = deliveryDate(anOrder, true);
     t.is(2, res)
 })
+
+deliverTest('test case3: deliveryDate', t => {
+    const anOrder = {
+        deliveryState: 'NY',
+        placedOn: {
+            plusDays: (param) => {
+                return param;
+            }
+        }
+    };
+    let res = deliveryDate(anOrder, true);
+    t.is(3, res)
+})
