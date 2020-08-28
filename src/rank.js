@@ -34,9 +34,14 @@ function voyageProfitFactor(voyage, history) {
     result = calcVoyageProfitByZoneAndHasChina(result, history, voyage);
   }
   else {
-    result += history.length > 8 ? 1 : 0;
-    result -= voyage.length > 18 ? 1 : 0;
+    result = calcVoyageProfitByZoneAndHasNotChina(result, history, voyage);
   }
+  return result;
+}
+
+function calcVoyageProfitByZoneAndHasNotChina(result, history, voyage) {
+  result += history.length > 8 ? 1 : 0;
+  result -= voyage.length > 18 ? 1 : 0;
   return result;
 }
 
