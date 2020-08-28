@@ -31,14 +31,19 @@ function voyageProfitFactor(voyage, history) {
   result = calcVoyageProfitByVoyageZone(result, voyage);
   if (hasChinaInVoyageAndHistory(voyage, history)) {
     result += 3;
-    result += history.length > 10 ? 1 : 0;
-    result += voyage.length > 12 ? 1 : 0;
-    result -= voyage.length > 18 ? 1 : 0;
+    result = calcVoyageProfitByZoneAndHasChina(result, history, voyage);
   }
   else {
     result += history.length > 8 ? 1 : 0;
     result -= voyage.length > 18 ? 1 : 0;
   }
+  return result;
+}
+
+function calcVoyageProfitByZoneAndHasChina(result, history, voyage) {
+  result += history.length > 10 ? 1 : 0;
+  result += voyage.length > 12 ? 1 : 0;
+  result -= voyage.length > 18 ? 1 : 0;
   return result;
 }
 
