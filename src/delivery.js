@@ -5,10 +5,13 @@ function deliveryDate(anOrder, isRush) {
 function switchRushIsFalse(anOrder) {
   let deliveryTime;
   switch (anOrder.deliveryState) {
-    case 'MA' || 'CT' || 'NY':
+    case 'MA':
+    case 'CT':
+    case 'NY':
       deliveryTime = 2;
       break;
-    case 'ME' || 'NH':
+    case 'ME':
+    case 'NH':
       deliveryTime = 3;
       break;
     default:
@@ -20,10 +23,12 @@ function switchRushIsFalse(anOrder) {
 function switchRushIsTrue(anOrder) {
   let deliveryTime;
   switch (anOrder.deliveryState) {
-    case 'MA' || 'CT':
+    case 'MA':
+    case 'CT':
       deliveryTime = 1;
       break;
-    case 'NY' || 'NH':
+    case 'NY':
+    case 'NH':
       deliveryTime = 2;
       break;
     default:
